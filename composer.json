@@ -7,7 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "hito-software/module": "dev-master",
+        "hito-software/module": "*",
         "illuminate/contracts": "^9.0",
         "spatie/laravel-package-tools": "^1.9.2"
     },
