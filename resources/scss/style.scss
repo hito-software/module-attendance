@@ -1,0 +1,9 @@
+@use 'overview';
+
+$rootSelector: '.hito-attendance';
+
+#{$rootSelector} {
+
+}
+
+@include overview.styles($rootSelector);

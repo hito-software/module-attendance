@@ -1,0 +1,93 @@
+@mixin styles($parent) {
+  #{$parent}__legend {
+    @apply flex select-none;
+
+    &__item {
+      @apply text-white text-center py-4 px-10 flex items-center justify-center space-x-2;
+
+      &--present {
+        background-color: green;
+      }
+    }
+
+    &__symbol {
+      @apply text-4xl font-bold;
+    }
+
+    &__name {
+      @apply uppercase tracking-widest text-lg;
+      max-width: 20ch;
+    }
+  }
+
+  #{$parent}__overview {
+    @apply relative flex w-full select-none overflow-hidden;
+
+    &__content {
+      @apply relative overflow-hidden;
+      min-height: 400px;
+      max-height: 60vh;
+    }
+
+    &__side {
+      @apply bg-white h-full z-30;
+    }
+
+    &__heading {
+      @apply py-2 px-6 flex items-center justify-center whitespace-nowrap overflow-hidden bg-white;
+      height: 50px;
+    }
+
+    &__heading-day {
+      @apply uppercase text-xs font-bold tracking-widest;
+    }
+
+    &__row {
+      @apply p-2 flex items-center overflow-hidden;
+      height: 60px;
+    }
+
+    &__row_name{
+      max-width: 15ch;
+    }
+
+    &__side &__row {
+      @apply whitespace-nowrap;
+      width: 250px;
+    }
+
+    &__side &__heading {
+      width: 250px;
+    }
+
+    &__main &__heading {
+      @apply text-center;
+      width: 120px;
+    }
+
+    &__main &__row {
+      @apply justify-center text-center;
+      width: 120px;
+    }
+
+    &__row:nth-child(2n) {
+      @apply bg-gray-100;
+    }
+
+    &__column--today &__heading,
+    &__row--today:nth-child(n) {
+      @apply bg-blue-500 bg-opacity-25;
+    }
+  }
+
+  #{$parent}__pill {
+    @apply bg-opacity-75 rounded-xl bg-green-500 py-1 px-2 font-bold text-white;
+  }
+
+  #{$parent}__requests{
+    &__employee_name{
+      @apply text-xs font-bold uppercase;
+      max-width: 10ch;
+    }
+  }
+}
