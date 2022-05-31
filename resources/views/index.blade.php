@@ -5,15 +5,15 @@
 @section('actions')
     @can('create', \Hito\Modules\Attendance\Models\AttendanceRequest::class)
         <a href="{{ route('attendance.requests.create') }}"
-        class="bg-blue-500 py-2 px-4 rounded text-white uppercase text-sm font-bold tracking-wide hover:bg-opacity-90">
+        class="hito-attendance__actions__create">
             <i class="fas fa-plus"></i> Make request</a>
     @endcan
 @endsection
 
 @section('content')
-    <div class="space-y-4">
-        <x-hito::Card class="overflow-hidden">
-            <div class="relative" data-scrollbar='{"autoHide": "never"}'>
+    <div class="hito-attendance__legend__wrapper">
+        <x-hito::Card class="hito-attendance__legend__card">
+            <div class="hito-attendance__legend__scrollbar" data-scrollbar='{"autoHide": "never"}'>
                 <div class="hito-attendance__legend">
                     <div class="hito-attendance__legend__item hito-attendance__legend__item--present">
                         <div class="hito-attendance__legend__symbol">P</div>
@@ -31,7 +31,7 @@
         </x-hito::Card>
 
         <x-hito::Card>
-            <div class="p-5">
+            <div class="hito-attendance__overview__wrapper">
                 <div class="hito-attendance__overview">
                     <div class="hito-attendance__overview__side">
                         <div class="hito-attendance__overview__column">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative w-full">
+                    <div class="hito-attendance__overview__table">
                         <div class="hito-attendance__overview__container" id="hito-attendance__header">
                             <div class="hito-attendance__overview__main">
                                 @foreach($days as $item)
@@ -73,7 +73,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="relative w-full">
+                        <div class="hito-attendance__overview__table">
                             <div class="hito-attendance__overview__container" id="hito-attendance__body">
                                 <div class="hito-attendance__overview__main">
                                     @foreach($days as $item)
