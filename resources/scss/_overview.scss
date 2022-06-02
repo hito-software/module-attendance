@@ -1,8 +1,30 @@
+@mixin defaultBtn() {
+  @apply bg-gray-500 hover:bg-opacity-90;
+}
+
+@mixin createBtn() {
+  @apply bg-blue-500 hover:bg-opacity-90;
+}
+
+@mixin editBtn() {
+  @apply bg-sky-500 hover:bg-opacity-90;
+}
+
+@mixin deleteBtn() {
+  @apply bg-red-500 hover:bg-opacity-90;
+}
+
+@mixin openBtn() {
+  @apply bg-green-500 hover:bg-opacity-90;
+}
+
+
 @mixin styles($parent) {
 
   #{$parent}__actions {
     &__create {
-      @apply bg-blue-500 py-2 px-4 rounded text-white uppercase text-sm font-bold tracking-wide hover:bg-opacity-90;
+      @apply py-2 px-4 rounded text-white uppercase text-sm font-bold tracking-wide;
+      @include createBtn;
     }
   }
 
@@ -44,6 +66,10 @@
 
     &__wrapper {
       @apply p-5;
+    }
+
+    &__user {
+      @apply flex items-center space-x-2;
     }
 
     &__content {

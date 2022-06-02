@@ -65,7 +65,7 @@
                             <div class="hito-attendance__overview__column">
                                 @foreach($users as $user)
                                     <div class="hito-attendance__overview__row">
-                                        <div class="flex items-center space-x-2">
+                                        <div class="hito-attendance__overview__user">
                                             <x-hito::UserAvatar size="2.5rem" :user="$user"/>
                                             <strong class="hito-attendance__overview__row_name truncate">{{ $user->full_name }}</strong>
                                         </div>
