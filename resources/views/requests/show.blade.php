@@ -6,24 +6,24 @@
     <form action="{{ route('attendance.requests.recalculate', $request->id) }}" method="post">
         @csrf
         <button type="submit" data-turbo="false"
-                class="bg-blue-500 py-2 px-4 rounded text-white uppercase text-sm font-bold tracking-wide hover:bg-opacity-90">
+                class="hito-attendance__request__header-btn hito-attendance__request__header-btn--recalculate">
             <i class="fas fa-file-invoice"></i> Recalculate
         </button>
     </form>
 @endsection
 
 @section('content')
-    <div class="my-4 bg-white p-4 rounded-lg shadow">
-        <div class="grid md:grid-cols-6 gap-4">
-            <div class="col-span-4">
-                <div class="space-y-4">
-                    <div class="border rounded p-2 space-y-2">
-                        <label class="block font-bold">Requested by</label>
+    <div class="hito-attendance__request__container">
+        <div class=" hito-attendance__request__wrapper">
+            <div class=" hito-attendance__request__wrapper-col">
+                <div class="hito-attendance__request__wrapper-space">
+                    <div class="hito-attendance__request__label-wrapper">
+                        <label class="hito-attendance__request__label-text">Requested by</label>
                         <div><strong>{{ $request->user->full_name }}</strong></div>
                     </div>
 
-                    <div class="border rounded p-2 space-y-2">
-                        <label class="block font-bold">Type</label>
+                    <div class="hito-attendance__request__label-wrapper">
+                        <label class="hito-attendance__request__label-text">Type</label>
                         <div>
                             @include('hito.attendance::_type-pill', ['color' => $request->type->color,
 'symbol' => $request->type->symbol, 'name' => $request->type->name])
@@ -31,16 +31,17 @@
                     </div>
 
                     @if(!empty($request->description))
-                        <div class="border rounded p-2 space-y-2">
-                            <label for="form_description" class="block font-bold">Description</label>
+                        <div class="hito-attendance__request__label-wrapper">
+                            <label for="form_description"
+                                   class="hito-attendance__request__label-text">Description</label>
                             <div>
                                 <p>{{ $request->description }}</p>
                             </div>
                         </div>
                     @endif
 
-                    <div class="text-center">
-                        <span class="font-bold text-xl">
+                    <div class="hito-attendance__request__date">
+                        <span class="hito-attendance__request__date-text">
                             @if(isset($request->end_at) && ($request->start_at->format('F') != $request->end_at->format('F')))
                                 {{ $request->start_at->format('F') }} - {{ $request->end_at->format('F Y') }}
                             @else
@@ -54,12 +55,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-2">
-                <div class="border rounded p-4 space-y-2">
-                    <div class="border-b-2 pb-2">
-                        <div class="space-y-2">
-                            <div class="flex-1">
-                                <label class="block text-2xl mb">Approvals</label>
+            <div class="hito-attendance__request__approval-col">
+                <div class="hito-attendance__request__label-wrapper">
+                    <div class="hito-attendance__request__approval-border">
+                        <div class="hito-attendance__request__approval-space">
+                            <div class="hito-attendance__request__approval-label">
+                                <label class="hito-attendance__request__approval-text">Approvals</label>
                             </div>
                             @if(!empty($myApproval))
                                 <div>
@@ -67,23 +68,23 @@
                                         <form action="{{ route('attendance.requests.update-approval', $request->id) }}"
                                               method="post">
                                             @csrf
-                                            <div class="flex flex-col space-y-2">
+                                            <div class="hito-attendance__request__approval-actions">
                                                 <button type="submit" name="value" value="0"
-                                                        class="py-2 px-4 rounded bg-red-500 text-white uppercase text-sm font-bold hover:bg-red-400">
+                                                        class="hito-attendance__request__header-btn hito-attendance__request__header-btn--reject">
                                                     <i class="fas fa-times"></i> Reject
                                                 </button>
                                                 <button type="submit" name="value" value="1"
-                                                        class="py-2 px-4 rounded bg-green-500 text-white uppercase text-sm font-bold hover:bg-green-400">
+                                                        class="hito-attendance__request__header-btn hito-attendance__request__header-btn--approve">
                                                     <i class="fas fa-check"></i> Approve
                                                 </button>
                                             </div>
                                         </form>
                                     @elseif($myApproval->is_approved)
-                                        <div class="py-2 px-4 rounded bg-green-500 text-white uppercase text-sm font-bold">
+                                        <div class="hito-attendance__request__approved">
                                             <i class="fas fa-check"></i> You approved
                                         </div>
                                     @else
-                                        <div class="py-2 px-4 rounded bg-red-500 text-white uppercase text-sm font-bold">
+                                        <div class="hito-attendance__request__rejected">
                                             <i class="fas fa-times"></i> You rejected
                                         </div>
                                     @endif
@@ -91,24 +92,24 @@
                             @endif
                         </div>
                     </div>
-                    <div class="space-y-4">
-                        <div class="space-y-2">
+                    <div class="hito-attendance__request__approval-wrapper">
+                        <div class="hito-attendance__request__approval-wrapper--space">
                             @foreach($request->approvals as $approval)
-                                <div class="flex w-full space-x-4 items-center">
+                                <div class="hito-attendance__request__approval-user">
                                     <div class="relative">
                                         <x-hito::UserAvatar size="2.5rem" :user="$approval->user"/>
                                         @if(!is_null($approval->is_approved))
                                             <div
-                                                    class="absolute bottom-0 right-0 transform translate-x-1 translate-y-1">
+                                                    class="hito-attendance__request__approval-items">
                                                 @if($approval->is_approved)
                                                     <div
-                                                            class="rounded-full bg-green-500 flex items-center justify-center text-white"
+                                                            class="hito-attendance__request__approval-items--green"
                                                             style="width: 20px; height: 20px;">
                                                         <i class="fas fa-check text-xs"></i>
                                                     </div>
                                                 @else
                                                     <div
-                                                            class="rounded-full bg-red-500 flex items-center justify-center text-white"
+                                                            class="hito-attendance__request__approval-items--red"
                                                             style="width: 20px; height: 20px;">
                                                         <i class="fas fa-times text-xs"></i>
                                                     </div>
@@ -116,19 +117,18 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="overflow-auto flex-1">
-                                        <div class="flex items-center space-x-2">
-                                            <div class="font-bold">
+                                    <div class="hito-attendance__request__users">
+                                        <div class="hito-attendance__request__users-items">
+                                            <div class="hito-attendance__request__users-text">
                                                 {{ $approval->user->full_name }}
                                             </div>
                                             @if(auth()->user()->id === $approval->user->id)
                                                 <div>
-                                            <span class="uppercase text-xs font-bold py-1 px-2 bg-blue-600 bg-opacity-75
-                                rounded text-white inline-block cursor-default">Me</span>
+                                                    <span class="hito-attendance__request__users-item">Me</span>
                                                 </div>
                                             @endif
                                         </div>
-                                        <div class="overflow-ellipsis overflow-hidden w-full"
+                                        <div class="hito-attendance__request__users-email"
                                              title="{{ $approval->user->email }}">{{ $approval->user->email }}</div>
                                     </div>
                                 </div>

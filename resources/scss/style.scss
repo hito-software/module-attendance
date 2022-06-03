@@ -1,4 +1,6 @@
 @use 'overview';
+@use 'request';
+
 
 $rootSelector: '.hito-attendance';
 
@@ -7,3 +9,4 @@ $rootSelector: '.hito-attendance';
 }
 
 @include overview.styles($rootSelector);
+@include request.styles($rootSelector);
