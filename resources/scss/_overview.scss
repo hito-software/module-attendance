@@ -38,10 +38,6 @@
       @include recalculateBtn;
     }
 
-    &__header-btn-reject {
-      @include rejectBtn;
-    }
-
     &__header-btn--recalculate {
       @include recalculateBtn;
     }
@@ -99,7 +95,7 @@
     }
 
     &__approval-text {
-      @apply block text-2xl; //missing mb
+      @apply block text-2xl;
     }
 
     &__approval-actions {

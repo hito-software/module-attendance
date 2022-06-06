@@ -22,10 +22,10 @@
                 <form action="{{ route('attendance.reports.store') }}" method="post">
                     @csrf
                     <div class="hito-attendance__report__wrapper">
-                        <x-hito::Form.Select title="User" name="users[]" multiple
+                        <x-hito::Form.Select title="User" name="users" multiple
                                              :value="!empty($report->users) ? $report->users : []"
                                              :items="$users" placeholder="Select user"/>
-                        <x-hito::Form.Select title="Type" name="types[]" multiple
+                        <x-hito::Form.Select title="Type" name="types" multiple
                                              :value="!empty($report->users) ? $report->types : []"
                                              :items="$types" placeholder="Select type"/>
                         <x-hito::Form.DatePicker title="Start date" name="start_date" :required="true"
