@@ -1,25 +1,164 @@
 @mixin defaultBtn() {
-  @apply bg-gray-500 hover:bg-opacity-90;
+  @apply bg-gray-600 hover:bg-gray-500;
 }
 
 @mixin createBtn() {
-  @apply bg-blue-500 hover:bg-opacity-90;
+  @apply bg-blue-600 hover:bg-blue-500;
 }
 
 @mixin editBtn() {
-  @apply bg-sky-500 hover:bg-opacity-90;
+  @apply bg-sky-600 hover:bg-sky-500;
 }
 
 @mixin deleteBtn() {
-  @apply bg-red-500 hover:bg-opacity-90;
+  @apply bg-red-600 hover:bg-red-500;
 }
 
 @mixin openBtn() {
-  @apply bg-green-500 hover:bg-opacity-90;
+  @apply bg-green-600 hover:bg-green-500;
+}
+
+@mixin recalculateBtn() {
+  @apply bg-blue-500 hover:bg-opacity-90;
+}
+
+@mixin rejectBtn() {
+  @apply bg-red-500 hover:bg-red-400;
+}
+
+@mixin approveBtn() {
+  @apply bg-green-500 hover:bg-green-400;
 }
 
 
 @mixin styles($parent) {
+  #{$parent}__request {
+    &__header-btn {
+      @apply py-2 px-4 rounded text-white uppercase text-sm font-bold tracking-wide;
+      @include recalculateBtn;
+    }
+
+    &__header-btn-reject {
+      @include rejectBtn;
+    }
+
+    &__header-btn--recalculate {
+      @include recalculateBtn;
+    }
+
+    &__header-btn--approve {
+      @include approveBtn;
+    }
+
+    &__container {
+      @apply my-4 bg-white rounded-lg shadow;
+    }
+
+    &__wrapper {
+      @apply grid md:grid-cols-6 gap-4;
+    }
+
+    &__wrapper-col {
+      @apply col-span-4;
+    }
+
+    &__wrapper-space {
+      @apply space-y-4;
+    }
+
+    &__label-wrapper {
+      @apply border rounded p-2 space-y-2;
+    }
+
+    &__label-text {
+      @apply block font-bold;
+    }
+
+    &__date {
+      @apply text-center;
+    }
+
+    &__date-text {
+      @apply font-bold text-xl;
+    }
+
+    &__approval-col {
+      @apply col-span-2;
+    }
+
+    &__approval-border {
+      @apply border-b-2 pb-2;
+    }
+
+    &__approval-space {
+      @apply space-y-2;
+    }
+
+    &__approval-label {
+      @apply flex-1;
+    }
+
+    &__approval-text {
+      @apply block text-2xl; //missing mb
+    }
+
+    &__approval-actions {
+      @apply flex flex-col space-y-2;
+    }
+
+    &__approved {
+      @apply py-2 px-4 rounded bg-green-500 text-white uppercase text-sm font-bold;
+    }
+
+    &__rejected {
+      @apply py-2 px-4 rounded bg-red-500 text-white uppercase text-sm font-bold;
+    }
+
+    &__approval-wrapper {
+      @apply space-y-4;
+    }
+
+    &__aproval-wrapper--space {
+      @apply space-y-2;
+    }
+
+    &__approval-user {
+      @apply flex w-full space-x-4 items-center;
+    }
+
+    &__approval-items {
+      @apply absolute bottom-0 right-0 transform translate-x-1 translate-y-1;
+    }
+
+    &__approval-items--green {
+      @apply rounded-full bg-green-500 flex items-center justify-center text-white;
+    }
+
+    &__approval-items--red {
+      @apply rounded-full bg-red-500 flex items-center justify-center text-white;
+    }
+
+    &__users {
+      @apply overflow-auto flex-1;
+    }
+
+    &__users-items {
+      @apply flex items-center space-x-2;
+    }
+
+    &__users-text {
+      @apply font-bold;
+    }
+
+    &__users-item {
+      @apply uppercase text-xs font-bold py-1 px-2 bg-blue-600 bg-opacity-75
+      rounded text-white inline-block cursor-default;
+    }
+
+    &__users-email {
+      @apply overflow-ellipsis overflow-hidden w-full;
+    }
+  }
 
   #{$parent}__actions {
     &__create {
@@ -143,4 +282,84 @@
       max-width: 10ch;
     }
   }
+
+  #{$parent}__user-requests {
+    &__wrapper {
+      @apply space-y-4 my-4;
+    }
+
+    &__legend-bg {
+      @apply bg-white p-4 rounded-lg shadow;
+    }
+
+    &__title {
+      @apply uppercase tracking-wide font-bold;
+    }
+
+    &__wraper-space {
+      @apply space-y-2;
+    }
+
+    &__request-row {
+      @apply relative hover:bg-blue-200 rounded;
+    }
+
+    &__grid-col {
+      @apply grid grid-cols-4 items-center py-2 hover:bg-opacity-25 hover:bg-blue-100; // TODO: not working ok//
+    }
+
+    &__grids {
+      @apply grid grid-cols-4 py-4 bg-gray-100 rounded font-bold; // TODO: not working ok//
+    }
+
+    &__rows {
+      @apply px-4;
+    }
+
+    &__id {
+      @apply absolute top-0 left-0 w-full h-full z-10 block;
+    }
+
+    &__status {
+      @apply uppercase text-xs font-bold py-1 px-2 bg-green-600 bg-opacity-75 rounded text-white inline-block cursor-default;
+    }
+
+    &__status-total {
+      @apply uppercase text-xs font-bold py-1 px-2 bg-blue-600 bg-opacity-75 rounded text-white inline-block cursor-default;
+    }
+
+    &__status-count {
+      @apply uppercase text-xs font-bold py-1 px-2 bg-red-600 bg-opacity-75 rounded text-white inline-block cursor-default;
+    }
+
+    &__status-pending {
+      @apply uppercase text-xs font-bold py-1 px-2 bg-yellow-600 bg-opacity-75 rounded text-white inline-block cursor-default;
+    }
+
+    &__title-bg {
+      @apply space-y-2 my-4 bg-white p-4 rounded-lg shadow;
+    }
+
+    &__title-style {
+      @apply uppercase tracking-wide font-bold;
+    }
+
+    &__space {
+      @apply space-y-2;
+    }
+
+    &__grid-employee {
+      @apply grid grid-cols-5 py-4 bg-gray-100 rounded font-bold;
+    }
+
+    &__grid-user {
+      @apply grid grid-cols-5 py-4 bg-gray-100 rounded font-bold;
+    }
+
+    &__flex-user {
+      @apply grid grid-cols-5 py-4 bg-gray-100 rounded font-bold;
+    }
+
+  }
+
 }
