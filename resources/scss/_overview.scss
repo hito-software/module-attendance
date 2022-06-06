@@ -362,4 +362,80 @@
 
   }
 
+  #{$parent}__report {
+    &__header-btn {
+      @apply py-2 px-4 rounded text-white uppercase text-sm font-bold tracking-wide ;
+      @include recalculateBtn;
+    }
+
+    &__header-btn--download {
+      @include recalculateBtn;
+    }
+
+    &__header-btn--open {
+      @include openBtn;
+    }
+
+    &__container {
+      @apply space-y-4 my-4;
+    }
+
+    &__form {
+      @apply bg-white p-4 rounded-lg shadow;
+    }
+
+    &__wrapper {
+      @apply grid sm:grid-cols-2 gap-4;
+    }
+
+    &__submit {
+      @apply flex justify-end my-2;
+    }
+
+    &__submit-btn {
+      @apply bg-blue-500 py-2 px-4 rounded text-white uppercase text-sm font-bold tracking-wide hover:bg-opacity-90;
+    }
+
+    &__index {
+      @apply bg-white p-4 rounded-lg shadow;
+    }
+
+    &__index-container {
+      @apply space-y-2;
+    }
+
+    &__index-header {
+      @apply grid grid-cols-12 py-4 bg-gray-100 rounded font-bold;
+    }
+
+    &__index-content {
+      @apply space-y-2 flex;
+    }
+
+    &__index-items {
+      @apply grid grid-cols-12 items-center py-1 hover:bg-opacity-25 hover:bg-blue-100;
+    }
+
+    &__index-item--name {
+      @apply px-4 col-span-3 truncate;
+    }
+
+    &__index-item {
+      @apply px-4 col-span-3;
+    }
+
+    &__index-item--last {
+      @apply px-4 col-span-2;
+    }
+
+    &__index-show {
+      @apply col-span-1 flex items-center flex-wrap gap-2 px-2;
+    }
+
+    &__results {
+      @apply text-center;
+    }
+
+  }
+
 }
