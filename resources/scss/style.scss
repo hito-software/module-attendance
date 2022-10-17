@@ -3,7 +3,126 @@
 $rootSelector: '.hito-attendance';
 
 #{$rootSelector} {
+  &__Flow {
+    @apply space-y-2 select-none;
 
+    &__MainLabel {
+      @apply uppercase font-bold tracking-wide;
+    }
+
+    &__ValidationTypeGroup {
+      @apply flex flex-col gap-2 items-start;
+    }
+
+    &__ValidationTypeWrapper {
+      @apply flex items-center justify-center flex-wrap gap-2;
+    }
+
+    &__ValidationTypeSelect {
+      @apply bg-transparent border-b-4 border-b-green-600 p-2 rounded uppercase font-bold tracking-widest border-0 appearance-none;
+    }
+
+    &__AddGroupBtn {
+      @apply flex items-center gap-2 p-2 rounded-lg transition duration-200;
+      @apply hover:bg-green-600 hover:text-white;
+    }
+
+    &__AddGroupIcon {
+      @apply w-6 h-6 rounded-full flex items-center justify-center bg-green-600 text-white font-bold text-xs transition duration-300 transform;
+    }
+
+    &__AddGroupBtn:hover &__AddGroupIcon {
+      @apply rotate-180;
+    }
+
+    &__AddGroupLabel {
+      @apply font-bold tracking-wide;
+    }
+
+    &__SelectionModal {
+      @apply fixed top-0 left-0 w-full h-full z-50 bg-black/50 p-5 overflow-auto;
+
+      &__Content {
+        @apply min-h-full mx-auto max-w-[600px] p-5 bg-white rounded-lg shadow shadow-black/25 flex flex-col gap-5;
+        @apply md:min-h-0;
+      }
+
+      &__AddBtn {
+        @apply flex items-center gap-2 p-2 rounded-lg transition duration-200;
+        @apply hover:bg-green-600 hover:text-white;
+      }
+
+      &__AddBtnIcon {
+        @apply w-6 h-6 rounded-full flex items-center justify-center bg-green-600 text-white font-bold text-xs transition duration-200 transform;
+      }
+
+      &__AddBtn:hover &__AddBtnIcon {
+        @apply rotate-180;
+      }
+
+      &__AddBtnLabel {
+        @apply font-bold tracking-wide;
+      }
+
+      &__OrWrapper {
+        @apply flex items-center justify-center;
+      }
+
+      &__Or {
+        @apply font-bold uppercase rounded-lg bg-green-600 text-white px-2 py-1;
+      }
+
+      &__Btn {
+        @apply py-4 px-4 block w-full  rounded-lg uppercase font-bold text-white tracking-widest transition duration-150;
+
+        &--save {
+          @apply bg-green-600;
+          @apply hover:bg-green-700;
+        }
+
+        &--cancel {
+          @apply text-red-600;
+          @apply hover:bg-red-600 hover:text-white;
+        }
+      }
+    }
+
+    &__Value {
+      @apply flex items-center gap-1;
+
+      &__Btn {
+        @apply p-2 font-bold block flex items-center justify-center text-left gap-2 hover:bg-green-600 hover:text-white rounded-lg;
+      }
+
+      &__Placeholder {
+        @apply italic;
+      }
+
+      &__ClearBtn {
+        @apply flex items-center justify-center gap-1 uppercase font-bold bg-red-600 text-xs p-1 rounded text-white;
+
+        &--hidden {
+          @apply hidden;
+        }
+      }
+    }
+
+    &__ValueGroup {
+      @apply flex flex-wrap items-center gap-1;
+
+      &__Label {
+        @apply font-bold uppercase rounded-lg bg-green-600 text-white px-2 py-1;
+      }
+    }
+
+    &__Group {
+      @apply border-l-8 border-l-green-600 p-5 rounded-lg shadow border space-y-2;
+
+      &__Wrapper {
+        @apply flex flex-col flex-wrap gap-2;
+      }
+    }
+  }
 }
 
 @include overview.styles($rootSelector);
