@@ -41,7 +41,7 @@ class AttendanceServiceProvider extends ServiceProvider
         $this->registerConfig(__DIR__ . '/../config/config.php');
 
         $this->registerSeeder(DatabaseSeeder::class, SeederType::MAIN);
-        $this->registerSeeder(DemoSeeder::class, SeederType::MAIN);
+        $this->registerSeeder(DemoSeeder::class, SeederType::DEMO);
 
         $this->createPublicMenus();
         $this->createAdminMenus();
